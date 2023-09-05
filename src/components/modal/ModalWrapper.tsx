@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Backdrop from "../backdrop/Backdrop";
+import ModalProps from "./ModalTypes";
 
 const animationConfig = {
   hidden: {
@@ -23,26 +24,26 @@ const animationConfig = {
   },
 };
 
-type ModalProps = {
-  handleClose: () => void;
-  children: React.ReactNode;
-};
-
-const ModalWrapper: React.FC<ModalProps> = ({ handleClose, children }) => {
+const ModalWrapper: React.FC<ModalProps> = ({
+  className,
+  handleClose,
+  children,
+  ...props
+}) => {
   return (
     <Backdrop onClick={handleClose}>
       <motion.div
+        {...props}
         variants={animationConfig}
         initial="hidden"
         animate="visible"
         exit="exit"
-        className="
-        modal--wrapper"
+        className={!className ? "modal--wrapper" : className}
         onClick={(e) => {
           e.stopPropagation();
         }}
       >
-        <div>{children}</div>
+        {children}
         <button onClick={handleClose}>close</button>
       </motion.div>
     </Backdrop>

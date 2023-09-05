@@ -7,12 +7,15 @@ function App() {
 
   const closeModal = () => setModalOpen(false);
   const openModal = () => setModalOpen(true);
+
   return (
     <>
       <button onClick={() => (modalOpen ? closeModal() : openModal())}>
         Open modal
       </button>
-      <Modal isOpen={modalOpen} close={closeModal} />
+      <Modal isOpen={modalOpen} className="modal" handleClose={closeModal}>
+        <p>i'm your reusable modal!</p>
+      </Modal>
     </>
   );
 }

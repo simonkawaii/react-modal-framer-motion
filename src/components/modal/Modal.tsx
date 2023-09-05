@@ -1,12 +1,28 @@
 import { AnimatePresence } from "framer-motion";
 import ModalWrapper from "./ModalWrapper";
+import React from "react";
+import ModalProps from "./ModalTypes";
 
-const Modal = ({ isOpen, close }: { isOpen: boolean; close: () => void }) => {
+interface Modal extends ModalProps {
+  isOpen: boolean;
+}
+
+const Modal: React.FC<Modal> = ({
+  className,
+  children,
+  isOpen,
+  handleClose,
+  ...props
+}) => {
   return (
     <AnimatePresence initial={false} mode="wait" onExitComplete={() => null}>
       {isOpen && (
-        <ModalWrapper handleClose={close}>
-          <p>I'm your reusable modal!</p>
+        <ModalWrapper
+          {...props}
+          className={className}
+          handleClose={handleClose}
+        >
+          {children}
         </ModalWrapper>
       )}
     </AnimatePresence>

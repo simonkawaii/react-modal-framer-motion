@@ -4,14 +4,25 @@
   padding: 2rem;
   text-align: center;
 }
-
-.modal--wrapper {
-  display: flex;
+.modal {
   background-color: #646cff;
-  width: clamp(50%, 700px, 80%);
-  height: min(70%, 600px);
   border-radius: 1rem;
   padding: 0 24px;
+  display: flex;
+  width: clamp(50%, 700px, 80%);
+  height: min(70%, 600px);
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: auto;
+}
+.modal--wrapper {
+  background-color: red;
+  border-radius: 1rem;
+  padding: 0 24px;
+  display: flex;
+  width: clamp(50%, 700px, 80%);
+  height: min(70%, 600px);
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
